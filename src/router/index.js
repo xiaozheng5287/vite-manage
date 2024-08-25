@@ -14,7 +14,14 @@ const routes = [
       name: 'home',
       //使用路由懒加载的方式，只有当路由被访问时，才会加载对应的组件
       component: ()=> import('@/layout/index.vue')
-  }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    // redirect: '/login',
+    component: ()=> import('@/views/login/index.vue')
+  },
+
 ]
 
 const router = createRouter({
