@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
 //在main.js中引入下载好的依赖
 import 'ant-design-vue/dist/reset.css';

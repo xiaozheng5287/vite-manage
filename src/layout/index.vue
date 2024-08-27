@@ -4,15 +4,17 @@
 //在使用 <script setup> 的单文件组件中，导入的组件可以直接在模板中使用，无需注册：
 import Header from "./components/header/index.vue";
 import Footer from "./components/footer/index.vue";
-import SideMenu from "./components/sidemenu/index.vue"
+import SideMenu from "./components/sidemenu/index.vue";
+import Main from "./components/main/index.vue";
 </script>
 
 <template>
     <div class="my-container">
         <SideMenu class="my-container__sidemenu"></SideMenu>
-        <div>
+        <div style="width: calc(100% - 260px);">
             
             <Header class="my-container__header"></Header>
+            <Main class="my-container__main"></Main>
             <Footer class="my-container__footer"></Footer>
         </div>
     </div>
@@ -20,17 +22,23 @@ import SideMenu from "./components/sidemenu/index.vue"
 
 <style lang="scss" scoped>
 .my-container {
-    width: 1200px;
-    height: 500px;
+    width: 100%;
+    // height: 100%;
     // margin: 0;
     display: flex;
+    justify-content: space-between;
+    position: relative;
+    background: rgb(0, 21, 41);
     &__sidemenu {
         width: 260px;
-        height: 500px;
+        // height: 100%;
     }
     &__header {
-        width: calc(100% - 260px);
         height: 60px;
+    }
+    &__main {
+        background: #fff;
+        height: 100%;
     }
     &__footer {
         width: calc(100% - 260px);
