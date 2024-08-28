@@ -14,17 +14,17 @@ const routes = [
   {
       path: '/home',
       name: 'home',
-      icon: () => h(PieChartOutlined),
       component: () => import('@/layout/index.vue'),
       meta: {
         title: '首页',
         keepAlive: true,
+        // icon: () => h(PieChartOutlined),
+        icon: PieChartOutlined
       },
   },
   {
       path: '/bill',
       name: 'bill',
-      icon: () => h(DesktopOutlined),
       //使用路由懒加载的方式，只有当路由被访问时，才会加载对应的组件
       component: ()=> import('@/views/bill/index.vue'),
       // children: [
@@ -35,6 +35,8 @@ const routes = [
             meta: {
               title: '账单管理',
               keepAlive: true,
+              // icon: () => h(DesktopOutlined),
+              icon: DesktopOutlined,
             },
       //   },
       // ]
@@ -42,10 +44,10 @@ const routes = [
   {
     path: '/system',
     name: 'system',
-    icon: () => h(MailOutlined),
     meta: {
       title: '系统管理',
       keepAlive: true,
+      icon: MailOutlined,
     },
     // component: () => import('@/views/system/index.vue'),
     children: [
@@ -56,6 +58,7 @@ const routes = [
         meta: {
           title: '用户管理',
           keepAlive: true,
+          icon: AppstoreOutlined,
         }
       },
       {
@@ -65,6 +68,7 @@ const routes = [
         meta: {
           title: '角色管理',
           keepAlive: true,
+          icon: ContainerOutlined,
         }
       },
     ]

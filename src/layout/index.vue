@@ -31,7 +31,7 @@ import Main from "./components/main/index.vue";
     background: rgb(0, 21, 41);
     &__sidemenu {
         width: 260px;
-        // height: 100%;
+        height: 1000px;
     }
     &__header {
         height: 60px;
