@@ -6,16 +6,25 @@ import Header from "./components/header/index.vue";
 import Footer from "./components/footer/index.vue";
 import SideMenu from "./components/sidemenu/index.vue";
 import Main from "./components/main/index.vue";
+import routes from '@/router/menu/index.js';
 </script>
 
 <template>
     <div class="my-container">
-        <SideMenu class="my-container__sidemenu"></SideMenu>
+        <SideMenu class="my-container__sidemenu" :routes="routes"></SideMenu>
         <div style="width: calc(100% - 260px);">
-            
-            <Header class="my-container__header"></Header>
-            <Main class="my-container__main"></Main>
-            <Footer class="my-container__footer"></Footer>
+                <Header class="my-container__header"></Header>
+                    <!-- <router-view v-slot="{ Component }"> -->
+                <Main class="my-container__main">
+                        <!-- <transition name="move" mode="out-in"> -->
+                            <!-- <keep-alive :include="tabs.nameList"> -->
+                                <component :is="Component"></component>
+                            <!-- </keep-alive> -->
+                        <!-- </transition> -->
+                   
+                </Main>
+                 <!-- </router-view> -->
+                <Footer class="my-container__footer"></Footer>
         </div>
     </div>
 </template>
@@ -29,6 +38,7 @@ import Main from "./components/main/index.vue";
     justify-content: space-between;
     position: relative;
     background: rgb(0, 21, 41);
+    color: #fff;
     &__sidemenu {
         width: 260px;
         height: 1000px;
