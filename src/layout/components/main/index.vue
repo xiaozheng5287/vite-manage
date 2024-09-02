@@ -2,9 +2,9 @@
   <router-view v-slot="{ Component, route }">
     <!-- <transition name="move" mode="out-in"> -->
     <!-- <keep-alive :include="tabs.nameList"> -->
-    <component :is="Component"></component>
-    {{route}}
-    <!-- </keep-alive> -->
+    <keep-alive>  
+      <component :is="Component" :key="route.path"></component>
+    </keep-alive>
     <!-- </transition> -->
   </router-view>
 </template>
