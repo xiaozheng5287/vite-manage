@@ -1,9 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 //在main.js中引入下载好的依赖
-import 'ant-design-vue/dist/reset.css';
 import Antd from 'ant-design-vue';
-
+import './permission'
 //引入router
 import router from './router';  
 
