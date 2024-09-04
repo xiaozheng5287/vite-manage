@@ -1,26 +1,26 @@
 <template>
   <!--利用递归实现菜单及其子菜单的渲染-->
-  <a-sub-menu v-if="menuItem.routeItem.children" :key="menuItem.routeItem.children.path">
+  <a-sub-menu v-if="menuList.children" :key="menuList.children.path">
     <template #icon>
-      <component :is="menuItem.routeItem.meta.icon"/>
+      <component :is="menuList.meta.icon"/>
     </template>
     <template #title>
-      <span>{{ menuItem.routeItem.meta.title }}</span>
+      <span>{{ menuList.meta.title }}</span>
     </template>
-    <!-- <a-sub-menu v-for="subItem in (menuItem.routeItem.children)" :key="subItem.path"></a-sub-menu> -->
-     <!-- <menu-item v-for="child in menuItem.routeItem.children" :item="child" :key="child.path" /> -->
-    <a-menu-item v-for="subItem in (menuItem.routeItem.children)" :key="subItem.path">
+    <!-- <a-sub-menu v-for="subItem in (menuList.children)" :key="subItem.path"></a-sub-menu> -->
+     <!-- <menu-item v-for="child in menuList.children" :item="child" :key="child.path" /> -->
+    <a-menu-item v-for="subItem in (menuList.children)" :key="subItem.path">
       <template #icon>
       <component :is="subItem.meta.icon"/>
     </template>
     {{ subItem.meta.title }}
     </a-menu-item>
   </a-sub-menu>
-  <a-menu-item v-else :key="menuItem.routeItem.path">
+  <a-menu-item v-else :key="item.path" v-for="item in menuList">
     <template #icon>
-      <component :is="menuItem.routeItem.meta.icon"/>
+      <component :is="item.meta.icon"/>
     </template>
-    {{ menuItem.routeItem.meta.title }}
+    {{ item.meta.title }}
   </a-menu-item>
 </template>
 
@@ -30,6 +30,8 @@ const menuItem = defineProps({
   routeItem: Object
 });
 console.log('menuItem',menuItem.routeItem);
+const menuList = menuItem.routeItem.children
+console.log('menuList',menuList);
 </script>
 
 <style lang="scss" scoped>
