@@ -28,11 +28,12 @@ const toggleCollapsed = () => {
 .my-header {
     display: flex;
     &__button {
-        background: rgb(0, 21, 41);;
+        // background: rgb(0, 21, 41);
         border: none;
-        color: #fff;
+        color: #000;
         margin-top: 10px;
         box-shadow: none;
+        z-index: 1000;
     }
 }
 </style>

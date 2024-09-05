@@ -36,8 +36,8 @@ import Main from "./components/main/index.vue";
     display: flex;
     justify-content: space-between;
     position: relative;
-    background: rgb(0, 21, 41);
-    color: #fff;
+    // background: rgb(0, 21, 41);
+    // color: #fff;
     &__sidemenu {
         width: 260px;
         height: 1000px;
