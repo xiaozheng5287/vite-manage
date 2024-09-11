@@ -1,12 +1,23 @@
 <template>
     <div class="my-header">
         <div>
+            <!--展开折叠按钮-->
             <a-button class="my-header__button" @click="toggleCollapsed">
                 <MenuUnfoldOutlined v-if="menuState.collapsed" />
                 <MenuFoldOutlined v-else />
             </a-button>
         </div>
-        <div></div>
+        <div>
+            <div>
+                <!--如何获取已经访问过的菜单列表-->
+                <!--路由式导航写法-->
+                <router-link
+               
+               
+                >
+                </router-link>
+            </div>
+        </div>
     </div>
 </template>
 

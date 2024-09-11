@@ -27,17 +27,21 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
-const menuList = ref([])
-const routeItem = defineProps({
+const props = defineProps({
   routeItem: Object
 });
+const { routeItem } = toRefs(props)
+console.log('rrrrr',routeItem.value);
 const router = useRouter()
-menuList.value = routeItem.routeItem[0].children
-console.log('menuList',routeItem);
-console.log('menuList',menuList.value);
+const menuList = routeItem.value[0].children
+// const {}
+// console.log('menuList',routeItem);
+// console.log('menuList',menuList.value);
 const handleClick = (menuItem) => {
+  console.log('rrrrrr',router);
+  console.log('menuItem',menuItem);
   router.push(menuItem.path)
 }
 
