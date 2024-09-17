@@ -9,13 +9,13 @@ import routes from './menu';
 //制定路由规则
 
 const allRoutes = [
-  // {
-  //     path: '/',
-  //     redirect: '/home', //重定向
-  //     name: 'index',
-  //     //使用路由懒加载的方式，只有当路由被访问时，才会加载对应的组件
-  //     component: ()=> import('@/layout/index.vue')
-  // },
+  {
+      path: '/login',
+      // redirect: '/home', //重定向
+      name: 'login',
+      //使用路由懒加载的方式，只有当路由被访问时，才会加载对应的组件
+      component: ()=> import('@/views/login/index.vue')
+  },
   ...routes
 ]
 

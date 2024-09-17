@@ -35,7 +35,8 @@ const submit = ()=>{
 <style lang="scss" scoped>
 .login-container {
     width: 400px;
-    margin: 0 auto;
+    height: calc(100% - 200px);
+    margin: 200px auto;
     padding: 100px 20px 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;

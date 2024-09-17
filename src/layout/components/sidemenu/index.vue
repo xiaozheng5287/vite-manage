@@ -18,12 +18,12 @@ const router = useRouter(); //用于访问路由实例。通过这个实例，�
 const selectedKeys = ref(["1"]);
 console.log("routeroute", route, "-------", routes);
 watch(
-  (route.path,
+  route.path,
   (newPath) => {
     console.log("newPath", newPath);
     selectedKeys.value = [newPath];
   },
-  { immediate: true })
+  { immediate: true }
 );
 </script>
 

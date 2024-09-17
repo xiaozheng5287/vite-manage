@@ -6,3 +6,12 @@ Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://
 
 本项目使用vite + antd + pinia
 
+未实现功能
+
+
+路由权限
+请求拦截
+layout-navbar导航
+二次封装form，table
+echarts
+

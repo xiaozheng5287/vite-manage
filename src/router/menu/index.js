@@ -14,7 +14,7 @@ const routes = [
   //所有的路由都默认为“/”的子路由，写的时候应该这样写(嵌套路由)
   {
       path: '/',
-      name: 'home',
+      redirect: '/home',
       component: () => import('@/layout/index.vue'),
       children: [
           {

@@ -7,17 +7,18 @@
                 <MenuFoldOutlined v-else />
             </a-button>
         </div>
-        <div>
+        <!-- <div>
             <div>
-                <!--如何获取已经访问过的菜单列表-->
-                <!--路由式导航写法-->
+                如何获取已经访问过的菜单列表
+                路由式导航写法
                 <router-link
                
                
                 >
                 </router-link>
             </div>
-        </div>
+        </div> -->
+        <Tags-View></Tags-View>
     </div>
 </template>
 
@@ -26,8 +27,9 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
  } from '@ant-design/icons-vue';
-import { h, reactive } from 'vue';
-const menuState = reactive({
+import { h, ref } from 'vue';
+import TagsView from './tagsview.vue'
+const menuState = ref({
     collapsed: false,
 })
 const toggleCollapsed = () => {
