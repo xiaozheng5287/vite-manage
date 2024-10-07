@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //do while循环会至少执行一次
+        function a() {
+            let b = 0;
+            do{
+                console.log(b);
+            }while(b++ < 10);
+        }
+        // a();
+        //while循环
+        function b() {
+            let c = 0;
+            while(c++ < 10){
+                console.log(c);
+            }
+        }
+        // b();
+        //for循环
+        function c() {
+            for(let d = 0; d < 10; d++){
+                console.log(d);
+            }
+        }
+        // c();
+        //for of循环(es6),专门用于可迭代对象(Array,Map,Set,String,arguments),对象默认是不可迭代的
+        function d() {
+            // let e = [1,2,3,4,5,6,7,8,9,10], sum=0;
+            let e = 'aajcacoakcao', sum=0;
+
+            for(let f of e){
+                sum += f;
+                console.log(f,sum);
+            }
+        }
+        // d();
+        //for of与Set和Map结合使用
+        function f() {
+            let g = new Set([1,2,3,4,5,6,7,8,9,10]);
+            for(let h of g){
+                console.log(h);
+            }
+        }
+        // f();
+
+
+        //for in循环,迭代任何对象的属性String,Array,Object,arguments,可以用来遍历对象的属性
+        function e() {
+            // let g = {
+            //     name: '张三',
+            //     age: 18,
+            //     sex: '男'
+            // }
+            let g = [1,2,3,4,5,6,7,8,9,10];
+            // let g = new Set([1,2,3,4,5,6,7,8,9,10]);//Set不行
+            // let g = new Map([['name','张三'],['age',18],['sex','男']]);//map不行
+            // let g = 'djaklvmsalkcmqo';
+            for(let h in g){
+                console.log(h,g[h]);
+            }
+        }
+        e();
+    </script>
+    </script>
+</body>
+</html>
