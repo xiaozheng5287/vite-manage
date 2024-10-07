@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./mypromise.js"></script>
+    <script>
+      /** 改变promise状态有三种方式
+       * 1. resolve
+       * 2. reject
+       * 3. 抛出异常
+       * */
+      let p = new MyPromise((resolve, reject) => {
+        // setTimeout(() => {
+        // //   resolve('成功');
+        //   reject("失败");
+        //   // throw new Error('错误');
+        // }, 1000);
+        // resolve('成功');
+        reject('失败');
+        // throw new Error('错误');
+      });
+      console.log(p);
+      p.then(
+        (value) => {
+          console.log("value1", value);
+        }
+      ).catch(
+        (reason) => {
+          console.log("reason2", reason);
+        }
+      );
+
+    //   p.then(
+    //     (value) => {
+    //       console.log("value3", value);
+    //     },
+    //     (reason) => {
+    //       console.log("reason3", reason);
+    //     }
+    //   );
+
+      console.log('关于同步异步-----,定时器中的回调，Ajax请求，，then中的回调函数都是异步的');
+    </script>
+  </body>
+</html>
