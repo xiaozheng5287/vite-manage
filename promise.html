@@ -7,7 +7,7 @@
   </head>
   <body>
     <script src="./mypromise.js"></script>
-    <script>
+    <!-- <script>
       /** 改变promise状态有三种方式
        * 1. resolve
        * 2. reject
@@ -44,6 +44,57 @@
     //   );
 
       console.log('关于同步异步-----,定时器中的回调，Ajax请求，，then中的回调函数都是异步的');
+    </script> -->
+    <script>
+      // let p = new MyPromise((resolve, reject) => {
+      //   resolve('成功');
+      //   // reject('失败');
+      // })
+      // //创建一个成功的promise
+      // // let p = MyPromise.resolve('成功');
+
+      // //resolve也可以传递promise对象
+      // //p1的成功或失败取决于p
+      // // let p1 = MyPromise.resolve(p)
+
+      // //resolve也可以传递thenable对象
+      // let p1 = MyPromise.resolve({
+      //   then(resolve, reject) {
+      //     reject('失败')
+      //   }
+      // })
+
+      // p1.then(
+      //   (value) => {
+      //     console.log("value1", value);
+      //   },
+      //   (reason) => {
+      //     console.log("reason2", reason);
+      //   }
+      // );
+      const p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('p1成功');
+        }, 1000);
+      });
+      const p2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('p2成功');
+        }, 2000);
+      });
+      const p3 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('p3成功');
+        }, 3000);
+      })
+      Promise.all([p1, p2, p3]).then(
+        (value) => {
+          console.log('all', value);
+        },
+        (reason) => {
+          console.log('all', reason);
+        }
+      )
     </script>
   </body>
 </html>

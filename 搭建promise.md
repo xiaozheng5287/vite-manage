@@ -25,4 +25,18 @@ p.then()多次，需要把每一次状态未改变的回调函数存起来，状
     }
 
 ### 7.实现catch方法
+    catch方法是then方法的一个语法糖，相当于then(null, onRejected)
+
+### 8. 自身的resolve方法
+    resolve方法可以传递3种参数，普通值、promise对象、thenable对象
+
+### 9. 自身的reject方法
+    reject表示直接传递一个失败的promise对象
+
+### 10.静态方法all
+    all方法接收一个数组，数组中每一个元素都是一个promise对象，all方法返回一个promise对象，这个promise对象的状态取决于数组中所有promise对象的状态，只有当数组中所有promise对象都成功时，all方法返回的promise对象才成功，只要有一个失败，all方法返回的promise对象就失败
+#### redux-saga
+
+### 11.静态方法race
+    返回最先成功或者最先失败的方法
 

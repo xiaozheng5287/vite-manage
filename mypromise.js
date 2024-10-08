@@ -104,6 +104,73 @@
         catch(onRejected) {
             this.then(null, onRejected);
         }
+        static resolve(value) {
+            if(value instanceof MyPromise) {
+                //如果入参是promise，直接返回promise本身
+                return value;
+            }
+            else if(typeof value?.then === 'function') {
+                //如果入参是thenable对象，返回一个promise，这个promise执行then方法
+                return new MyPromise((resolve, reject) => {
+                    setTimeout(() => {
+                        value.then(resolve, reject);
+                    })
+                })
+            }
+            else {
+                //如果入参是普通值，返回一个promise，这个promise执行resolve
+                return new MyPromise((resolve, reject) => {
+                    resolve(value);
+                })
+            }
+        }
+        static reject(reason) {
+            return new MyPromise((resolve, reject) => {
+                reject(reason);
+            })
+        }
+        static all(promises) {
+            return new MyPromise((resolve, reject) => {
+                //all里面需要传可迭代对象
+                if(typeof promises[Symbol.iterator] === 'function') {
+                    //定义一个容器，存放所有promise成功的结果
+                    const resultArr = Array(promisesArr.length);
+                    //将可迭代对象转换为数组
+                    const promisesArr = Array.from(promises);
+                    promisesArr.forEach((item, index)=>{
+                        const tmp = MyPromise.resolve(item);
+                        tmp.then(value => {
+                            resultArr[index] = value; //将成功的结果存入容器
+                            //如果容器中所有结果都成功，则resolve
+                            if(resultArr.filter(()=> true).length === promisesArr.length) {
+                                resolve(resultArr);
+                            }
+                        })
+                        //如果有一个promise失败，则reject
+                        .catch(reason => {
+                            reject(reason);
+                        })
+                    })
+                }
+                else {
+                    reject('promises is not iterable!')
+                }
+            })
+        }
+        static race(promises) {
+            return new MyPromise((resolve, reject) => {
+                //race里面需要传可迭代对象
+                if(typeof promises[Symbol.iterator] === 'function') {
+                    for(let item of promises) {
+                        const tmp = MyPromise.resolve(item);
+                        tmp.then(resolve,reject)
+                    }
+                }
+                else {
+                    reject('promises is not iterable!')
+                }
+            })
+        }
     }
     window.MyPromise = MyPromise;  
 })(window);
