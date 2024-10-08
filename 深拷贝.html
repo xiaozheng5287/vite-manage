@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //深拷贝 lodash库， JSON.stringfy
+        let obj1 = {
+            arr: [1, 2, 3],
+            arrayOfobj: [{a:3},{b:5}],
+            date: new Date(),
+            object: {val: 6},
+            fn: function() {
+                return 7
+            },
+            //es6新增集合
+            set: new Set([8, 9, 10]),
+            map: new Map([
+                [11, '12'],['13', 14]
+            ]),
+            reg: /[15]/,
+            // un:undefined
+        }
+
+        // 定义一个Map类型的属性cached，用于存储已经克隆过的对象
+        deepClone.cached = new Map()
+        //
+        function deepClone(obj) {
+            //第一轮判断传递进来是什么类型
+            //基本数据类型+fn
+            if(typeof(obj) !== 'object' || typeof(obj) === null) {
+                return obj;
+            }
+
+            //实现缓存解决环形对象
+            if(deepClone.cached.has(obj)) {
+                return deepClone.cached.get(obj)   
+            }
+
+            let tmp;
+            if(obj instanceof Map) {
+                tmp = new Map()
+                deepClone.cached.set(obj, tmp)
+                for(let [key, val] of obj) {
+                    tmp.set(deepClone(key), deepClone(val))
+
+                }
+            }
+            else if(obj instanceof Set) {
+                tmp = new Set()
+                deepClone.cached.set(obj, tmp)
+                for(let val of obj) {
+                    tmp.add(deepClone(val))
+
+                }
+            }
+            else if(obj instanceof RegExp) {
+                tmp = new RegExp(obj)
+                deepClone.cached.set(obj, tmp)
+            }
+            // else if(typeof(obj) === 'object' && !Array.isArray(obj)) {
+            //     let newObj = new Object()
+            //     //遍历这个对象，处理obj里面的内容(对象深层的引用数据类型也需要深拷贝)
+            //     for(let key in obj) {
+            //         newObj[key] = deepClone(obj[key])
+            //     }
+
+            // } 
+            else {
+                //数组与对象
+                //array.constructor==>array  object.constructor==>object
+                tmp = new obj.constructor()
+                deepClone.cached.set(obj, tmp)
+                for(let key in obj) {
+                    tmp[key] = deepClone(obj[key])
+                }
+            }
+
+            //需要返回数据  新的基于obj生成的内容
+            return tmp;
+
+        }
+
+        
+        
+        //制造环形对象
+        let obj2 = {
+            a: obj1
+        }
+        obj1.a = obj2
+
+        //1.fn没有，map、set、regexp都赋值失败
+        //2.无法处理环形对象，即对象内部有引用自身的情况
+        //3.无法处理对象内部为undefined、symbol、bigint类型的数据
+        //4.无法处理对象内部为Date、RegExp类型的数据
+        //5.无法处理对象内部为函数的数据
+        //6.无法处理对象内部为null的数据
+        //7.无法处理对象内部为NaN的数据
+        //8.无法处理对象内部为Infinity的数据
+        //9.无法处理对象内部为-Infinity的数据
+        //10.无法处理对象内部为undefined的数据
+        //11.无法处理对象内部为symbol的数据
+        
+        // let cloned = JSON.parse(JSON.stringify(obj1))
+
+
+        let cloned = deepClone(obj1)
+        console.log(cloned,'---',obj1);
+    </script>
+</body>
+</html>
