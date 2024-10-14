@@ -17,6 +17,8 @@
 
 <script setup>
 import { reactive, ref } from 'vue';
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const loginFormRef = reactive({
     username: '',
@@ -28,14 +30,19 @@ const submit = ()=>{
         password: loginFormRef.password
     }
     console.log('submit!!!',param);
-
+    localStorage.setItem('token','fojwifhwbajcqq')
+    //在登录页获取到了token之后，如何自动跳转至首页
+    if(localStorage.getItem('token')) {
+        router.push({ path: '/home' })
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .login-container {
     width: 400px;
-    margin: 0 auto;
+    height: calc(100% - 200px);
+    margin: 200px auto;
     padding: 100px 20px 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
