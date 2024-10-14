@@ -6,3 +6,15 @@ Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://
 
 本项目使用vite + antd + pinia
 
+
+请求需要携带token，没有token需要跳转到登录页登录以获取token，然后处理每个Ajax请求都携带token
+
+未实现功能
+
+
+路由权限
+请求拦截
+layout-navbar导航
+二次封装form，table
+echarts
+
