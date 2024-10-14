@@ -13,16 +13,16 @@ import Main from "./components/main/index.vue";
         <SideMenu class="my-container__sidemenu"></SideMenu>
         <div style="width: calc(100% - 260px);">
                 <Header class="my-container__header"></Header>
-                    <!-- <router-view v-slot="{ Component }"> -->
+                    
                 <Main class="my-container__main">
+                    <router-view>
                         <!-- <transition name="move" mode="out-in"> -->
                             <!-- <keep-alive :include="tabs.nameList"> -->
                                 <!-- <component :is="Component"></component> -->
                             <!-- </keep-alive> -->
                         <!-- </transition> -->
-                   
+                 </router-view>
                 </Main>
-                 <!-- </router-view> -->
                 <Footer class="my-container__footer"></Footer>
         </div>
     </div>

@@ -2,13 +2,13 @@
   <div>
     <h3 style="padding: 10px 0 10px 20px; margin: 0">后台管理系统</h3>
     <a-menu theme="light" mode="inline" v-model:selectedKeys="selectedKeys">
-      <Menu-Item :routeItem="routes"> </Menu-Item>
+      <item :routeList="routes"> </item>
     </a-menu>
   </div>
 </template>
 
 <script setup>
-import MenuItem from "./item.vue";
+import item from "./item.vue";
 import { ref, computed, h, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import routes from "@/router/menu/index.js";

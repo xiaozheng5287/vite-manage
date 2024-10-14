@@ -33,7 +33,7 @@ const submit = ()=>{
     localStorage.setItem('token','fojwifhwbajcqq')
     //在登录页获取到了token之后，如何自动跳转至首页
     if(localStorage.getItem('token')) {
-        router.push({ path: '/home' })
+        router.push({ path: '/index' })
     }    localStorage.setItem('token','fojwifhwbajcqq')
  //在登录页获取到了token之后，如何自动跳转至首页
 }
