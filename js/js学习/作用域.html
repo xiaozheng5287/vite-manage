@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数每次执行时都会开辟新的内存空间，当函数执行完毕之后，就会关闭这块空间，
+        //并且里面的一些变量都会销毁
+
+        //作用域：变量的使用范围
+        //全局作用域：函数外面的作用域，在全局作用域定义的变量叫做全局变量，可以在任何地方使用
+        //定义变量时不写let，则默认为全局变量
+        //形参相当于局部变量
+        // function fn() {
+        //     let n = 2;
+        //     console.log(n);
+        // }
+        // fn()
+        // console.log(n);
+        //块级作用域，用{}包起来的代码块,代码块内部声明的变量，外部无法使用
+        // {
+        //     let n = 6;
+        // }
+        // for(let i=0 ;i<=10; i++) {
+        //     let m = 6
+        //     console.log(m);
+        // }
+        // console.log(i); 
+        //var可以重复声明变量，let不可以
+        //var声明的变量相当于给window添加属性
+        //一个变量只定义不赋值，默认为undefined
+        //let、var定义的变量可以只定义不赋值，const不可以
+        // var a = 2;
+        // console.log(window);
+        // let b = 3;
+        // console.log(window);
+
+        /**
+         * 作用域链
+        */
+    //    let m =6;
+    //    function fn() {
+    //     function fun() {
+    //         console.log(m);
+    //     }
+    //     fun()
+    //    }
+    //    fn()
+
+    //    let num = 1;
+    //    function f1() {
+    //     let num = 2;
+    //     function f2() {
+    //         console.log(num);
+    //     }
+    //     f2()
+    //    }
+    //    f1();//2
+
+    // let num = 1;
+    // function f1() {
+    //     //没声明变量就向上找，看当前作用域有没有这个变量就看有没有声明这个变量
+    //     num = 2;
+    //     function f2() {
+    //         num = 3;
+    //         console.log(num);
+    //     }
+    //     f2()
+    // }
+    // f1();//3
+
+    // let num = 1;
+    // function f1() {
+    //     //没声明变量就向上找，看当前作用域有没有这个变量就看有没有声明这个变量
+    //     let num = 2;
+    //     function f2() {
+    //         num = 3;
+    //     }
+    //     f2()
+    // }
+    // f1();//1
+    // console.log(num);
+    /**
+     * 闭包 
+    */
+    //正常情况
+        // function fn() {
+        //     let n = 1;
+        //     console.log(n);
+        // }
+        // fn();
+        // console.log(n);
+
+        //闭包:一个作用域有权访问另一个作用域的局部变量
+        //闭包的作用：延长变量的使用范围
+        // function fn() {
+        //     let num = 123;
+        //     //作用域链
+        //     return function fun() {
+        //         console.log(num);
+        //     }
+        //     // fun();
+        // }
+        // fn()();
+        //回调函数也能实现闭包
+       //回调函数:当做参数的函数
+    //    function fn(a) {
+    //        let num = 123;
+    //        console.log(a);
+    //        a(num)
+    //    }
+    //    fn(function fun(n) {console.log(n);})
+
+       //预解析
+       //1.变量提升，把变量声明提升到当前作用域的最前面，不提升赋值
+       //2.函数提升，把函数声明提升到当前作用域的最前面，不提升函数体
+       //3.先提升变量，再提升函数
+       fn()
+       function fn() {
+           console.log('fn');
+       }
+
+    </script>
+</body>
+</html>

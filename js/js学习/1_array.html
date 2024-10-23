@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //筛选数组
+        // let arr = [2,0,6,1,77,0,52,0,25,7]
+        // let newArr = []
+        // for(let item of arr) {
+        //     if(item >= 10) {
+        //         newArr.push(item)
+        //     }
+        // }
+        // console.log(newArr);
+        //体会两个相同长度数组，分别为key和value，如何合并成对象
+        let key = ['name','age','gender','address','hobby']
+        let value = ['张三',18,'男','北京','篮球']
+        let obj = {}
+        //方法1
+        // for(let i = 0; i < key.length; i++) {
+        //     obj[key[i]] = value[i]
+        // }
+        //方法2
+        key.forEach((item, index)=> {
+            obj[item] = value[index]
+        })
+        //方法3
+        // for(let i in key) {
+        //     obj[key[i]] = value[i]
+        // }
+
+        console.log(obj);
+        //数组去重
+    </script>
+</body>
+</html>

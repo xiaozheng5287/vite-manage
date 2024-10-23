@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let scope = "global scope"
+      // function checksccope() {
+      //     let scope = "local scope"
+      //     function f() {
+      //         return scope
+      //     }
+      //     return f()
+      // }
+      // console.log(checksccope());//-----local scope
+      // let scope = "global scope"
+      // function checksccope() {
+      //     let scope = "local scope"
+      //     function f() {
+      //         return scope
+      //     }
+      //     return f
+      // }
+      // console.log(checksccope()());//-----local scope
+      // uniqueInteger.couter = 0;
+      // //每次调用函数都返回唯一不同的整数值
+      // function uniqueInteger() {
+      //     return uniqueInteger.couter++
+      // }
+      // console.log(uniqueInteger());
+      // console.log(uniqueInteger());
+      // //改写为闭包
+      // let num = (function uniqInt() {
+      //     let couter = 0
+      //     function fn() {
+      //         return couter++
+      //     }
+      //     return fn
+      // })()
+      // console.log(num());
+      // console.log(num());
+      // console.log(num());
+
+      // function couter() {
+      //     let n = 0;
+      //     return {
+      //         count: function() { return n++; },
+      //         reset: function() { n = 0; }
+      //     }
+      // }
+      // let c = couter(), d = couter()
+      // console.log(c.count());
+      // console.log(d.count());
+      // console.log(c.reset());
+      // console.log(c.count());
+      // console.log(d.count());
+
+      // function constfunc(v) {
+      //     return () => v
+      // }
+      // let funcs = []
+      // for(let i = 0; i < 10; i++) {
+      //     funcs[i] = constfunc(i)
+      // }
+      // console.log(funcs[5]());
+
+      // const arr = [1,2,3,4,5,6,7,8,9,10]
+      // // const arr1 = ['a','b','c','d','e','f',,'h','i','j']
+      // // arr1.forEach((item,index) => {
+      // //   console.log('item',item);
+      // // //   console.log('item',index);
+      // // },arr1)
+      // console.log(arr.reduce((x,y) => {
+      //     return x+y
+      // },20))
+    //   const arr = [
+    //     { name: "张三", age: 18, list: [{ label: "王五", value: 2018 }] },
+    //     { name: "李四", age: 19, list: [{ label: "赵六", value: 20198 }] },
+    //     {
+    //       name: "王五",
+    //       age: 20,
+    //       list: [
+    //         { label: "王五", value: 2018 },
+    //         { label: "赵六", value: 20198 },
+    //       ],
+    //     },
+    //     {
+    //       name: "钱七",
+    //       age: 22,
+    //       list: [
+    //         { label: "王五", value: 2018 },
+    //         { label: "赵六", value: 20198 },
+    //       ],
+    //     },
+    //     { name: "孙八", age: 23, list: [{ label: "王五", value: 2018 }] },
+    //   ];
+    // //   arr.map((item) => {
+    // //     if (item.list.length > 1) {
+    // //       item.list.map((item1) => {
+    // //           return
+    // //       })
+    // //     }
+    // //   });
+    //   console.log(arr.flatMap((item) => {
+    //     if (item.list.length > 1) {
+    //       item.list.map((item1) => {
+    //         return {
+    //             list: item.list,
+    //             ...item1
+    //         }  
+    //       })
+    //     }
+    //     else{
+    //         return item 
+    //     }
+    //   }));
+
+        
+
+
+
+    </script>
+  </body>
+</html>

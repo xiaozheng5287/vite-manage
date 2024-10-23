@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //预解析
+      //任何一个作用域执行代码之前都要先预解析
+      //变量提升：会把代码中声明的变量(var n)，提前解析到当前作用域最前面，
+      //但是只定义不赋值
+    //   console.log(n); //undefined
+    //   var n = 2;
+
+      //函数提升
+      //会把代码中具有名字的函数提前解析，提前解析到当前作用域最前面，
+      //但是只定义不调用
+      //函数优先
+
+    //   fn();//1111
+    //   function fn() {
+    //     console.log(1111);
+    //   }
+
+    //   function fun() {
+    //     console.log(m);
+    //     let m = 2;// Cannot access 'm' before initialization
+    //   }
+    //   fun()
+
+
+    console.log(n);//undefined
+    fn();
+    var n =3;
+    function fn() {
+        console.log(n);//undefined
+        var n = 6
+    }
+
+    console.log(a);//f a() {}
+    function a() {}
+    var a = 2;
+    console.log(a);//2
+
+
+    </script>
+  </body>
+</html>
