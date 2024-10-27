@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //b c 相当于在全局定义赋值
+        // f1();
+        // console.log(c);
+        // console.log(b);
+        // // console.log(a);
+        // // var a =1
+        // function f1 () {
+        //     var a = b = c = 9;//var a = 9; b=9; c=9;b和c没有声明
+        //     console.log('1111',a);
+        //     console.log('1111',b);
+        //     console.log('1111',c);
+        // }
+
+        //利用递归求n的阶乘 1~n
+        function digui(n) {
+            if(n === 1) {
+                return 1
+            }
+            else {
+                return n * digui(n - 1)//9
+            }
+        }
+        
+        console.log(digui(3));
+
+        //求斐波那契数列：兔子序列 1、1、2、3、5、8、13、21、34...
+        function rabbit(n) {
+            //每个月都要求前一个月和前两个月的和
+            if(n == 1 || n == 2) {
+                return 1
+            }
+            return rabbit(n-1) + rabbit(n-2)
+            //n=6
+            //return rabbit(5) + rabbit(4)
+            //return rabbit(4) + rabbit(3) + rabbit(3) + rabbit(2)=1
+            //return rabbit(3) + rabbit(2)=1 + rabbit(2)=1 + rabbit(1)=1 + rabbit(2)=1 + rabbit(1)=1 + 1
+            //return rabbit(2)=1 + rabbit(1)=1 + 1 + 1 + 1 + 1 + 1 + 1
+            //8
+        }
+        console.log(rabbit(8));//代表第几个月
+
+
+
+
+
+    </script>
+</body>
+</html>

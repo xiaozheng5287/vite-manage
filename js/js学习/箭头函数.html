@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btn">123</div>
+    <script>
+        // console.log(fn());
+        // let fn = function () {console.log(123);}//函数声明
+        function fn () {console.log(123);}//函数表达式
+        let fn1 = () => {}
+        setTimeout(() => {console.log(123);}, 1000);
+        //箭头函数语法：只有一个参数，小括号可以省略；函数体只有一句，花括号可以省略
+        //结果会自动返回，无需写return
+        //箭头函数的使用
+        //1.箭头函数不存在预解析，因为定义箭头函数用的是函数表达式，不是函数声明
+        //2.箭头函数中，不存在arguments对象，可以用rest参数代替
+        //3.箭头函数中，没有this，箭头函数中的this指向的是上级作用域的this
+        //函数中的this，指向调用者
+        function fun () {
+            console.log(this);
+        }
+        fun();//window
+        let btn = document.getElementById('btn')
+        btn.addEventListener('click', function () {
+            console.log(this);//btn<div id="btn">123</div>
+        })
+        //
+        let obj = {
+            name: '123',
+            age: 18,
+            say: function () {
+                // console.log(this);//obj
+                setTimeout(function () {
+                    console.log(this);//window
+                }, 1000)
+            },
+            say1: function () {
+                // console.log(this);//obj
+                setTimeout(() => {
+                    console.log(this);//obj指向上级作用域的this
+                },2000)
+            }
+        }
+        obj.say();
+        obj.say1();//箭头函数中，没有this，箭头函数中的this指向的是上级作用域的this
+        
+
+
+
+    </script>
+</body>
+</html>
