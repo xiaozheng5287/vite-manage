@@ -35,6 +35,40 @@
 
         console.log(obj);
         //数组去重
+
+
+        //数组排序
+        const unsortArr = [
+            {
+                status: 0,
+                name: 'aaa',
+                id: 1,
+            },
+            {
+                status: 1,
+                name: 'bbb',
+                id: 2,
+            },
+            {
+                status: 1,
+                name: 'ccc',
+                id: 3,
+            },
+            {
+                status: 0,
+                name: 'ddd',
+                id: 4,
+            },
+            {
+                status: 0,
+                name: 'eee',
+                id: 5,
+            }
+        ]
+        let sortedArr = unsortArr.sort((a,b) => {
+            return a.status - b.status
+        })
+        console.log(sortedArr);
     </script>
 </body>
 </html>
