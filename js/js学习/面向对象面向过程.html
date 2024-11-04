@@ -1,21 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        //面向过程编程
-        //面向对象
-        //面向对象编程（Object Oriented Programming，OOP）
-        //是一种编程范式或编程模型，它使用“对象”来设计软件。
-        //面向对象编程的主要目的是提高程序的模块化程度，使程序更易于理解和维护。
+      //面向过程编程
+      //面向对象
+      //面向对象编程（Object Oriented Programming，OOP）
+      //是一种编程范式或编程模型，它使用“对象”来设计软件。
+      //面向对象编程的主要目的是提高程序的模块化程度，使程序更易于理解和维护。
+
+      //对象
+      //字面量创建对象
+      //console.log(obj.name);//用于固定属性的写法
+      //console.log(obj['name']);//用于动态属性的写法
+      let obj = {
+        name: "张三",
+        age: 18,
+        sex: "男",
+        sayName() {
+          console.log(this.name);
+        },
+      };
+      //构造函数创建对象
+      //构造函数也是函数,只不过我们通常把构造函数的函数名首字母大写,new关键字调用构造函数
+
+      //如果构造函数没有参数，可以省略括号
+      let obj1 = new Object({
+        name: "张三",
+        age: 18,
+        sex: "男",
+        sayName() {
+          console.log(this.name);
+        },
+      });
+      let obj2 = new Object();
+      obj2.name = "张三";
+      console.log(obj2);
+      console.log(obj1);
+      //自定义构造函数
+      function Person(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.sayName = function () {};
+      }
+      let o = new Person("张三", 18, "男");
+      console.log(o);
+
+      //instanceof:用于判断一个对象是否是另一个构造函数的实例对象
+      function A () {}
+      function B () {}
+
+      let obj3 = new A();
+      console.log(obj3 instanceof A);//true
+      console.log(obj3 instanceof B);//false
+
+      //constructor:指回构造函数本身
+      console.log(obj3.constructor);//ƒ A () {}
+
+      //new的执行过程
+      /**
+       * 1. 在栈中创建一个新的空间
+       * 2. 栈中的this指向这个空间中的实例对象
+       * 3. 执行构造函数的代码
+       * 4. 然后会返回这个对象
+      */
+
+      //静态成员和实例成员
+      function Star (name, age) {
+        this.name = name;
+        this.age = age;
+        this.sing = function () {
+          console.log("唱歌");
+        }
+      }
+      //实例化对象
+      let obj5 = new Star("lily", 18);
+      console.log(obj5);
+
+      //Star构造函数也属于对象，对象身上就可以添加属性和方法
+      Star.language = "中文";
+      Star.skin = "黄色";
+      Star.eat = function () {
+        console.log("吃");
+      }
+      //在构造函数身上直接添加的成员，我们称为静态成员(静态属性、静态方法)
+      //静态成员只能由构造函数访问
+      //构造函数内部为实例对象准备的成员，实例成员只能通过实例对象来访问
+
+      console.log(Star.age);//undefined
+      console.log(obj5.language);//undefined
 
 
-        //对象
-        
+
+
     </script>
-</body>
+  </body>
 </html>
