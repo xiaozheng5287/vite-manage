@@ -95,6 +95,12 @@
       console.log(Star.age);//undefined
       console.log(obj5.language);//undefined
 
+      //Object: 创建普通对象的构造函数
+      let obj6 = new Object({name: "张三", age: 18, sex: "男"});
+      //静态方法
+      console.log(Object.keys(obj6));//["name", "age", "sex"]
+      console.log(Object.values(obj6));//["张三", 18, "男"]
+      console.log(Object.entries(obj6));//[["name", "张三"], ["age", 18], ["sex", "男"]]
 
 
 

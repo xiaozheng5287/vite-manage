@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+         * //字面量
+        var arr = [1,2,3,4,5];
+        //构造函数
+        var arr1 = new Array(1,2,3,4,5);
+        //所有的数组都是Array的实例对象
+        */
+
+      //concat\join\reverse
+      let arr = [1, 2, 3];
+      let arr1 = ["a", "b", "c"];
+      let arr2 = [11, 22, 333];
+      let newArr = arr.concat(arr1, arr2);
+      console.log(arr.concat(arr1, arr2));
+      console.log(newArr.join("-"));
+      console.log(newArr.reverse());
+
+      //indexOf
+      let str = "abc";
+      console.log(str.indexOf("a"));
+      console.log(arr.indexOf(5));
+
+      //静态方法
+
+      console.log(Array.isArray(str));
+    //常见的典型伪数组，包括jQuery中通过 $() 获取的DOM元素集, 
+    //函数中的的 arguments 对象， 以及字符串String对象。
+    //伪数组又称类数组，是一个类似数组的对象，是一种按照索引存储数据且具有length属性的对象；
+    //因为是对象，所以伪数组不具有数组的push()、foreach()等方法。
+      //把伪数组转换为真数组
+      let o = {
+        0: 'a',
+        1: 'b',
+        2: 'c',
+        length: 3,//必须有length
+      }
+      console.log(Array.from(o));
+
+      function fn1() {
+        console.log(arguments);
+        console.log(Array.from(arguments));
+      }
+      fn1(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+
+    </script>
+  </body>
+</html>

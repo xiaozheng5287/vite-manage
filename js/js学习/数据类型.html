@@ -22,7 +22,6 @@
       //复杂数据类型在内存中的存储
       //在栈中开辟一个空间，存储地址，指向-->在堆中开辟一个空间，存储值
 
-
       //变量传递给另一个变量，称为数据传递
       //值传递：简单类型，传递的是值，把数据直接复制一份传递过去
       let m = n;
@@ -30,14 +29,44 @@
       console.log(n);
       m = 6;
       console.log(m);
-      console.log(n);//m改变，n不变，m和n指向不同的内存空间
+      console.log(n); //m改变，n不变，m和n指向不同的内存空间
       //引用传递：复杂数据类型，传递的是地址，复制一份地址传递过去，指向的是同一个堆内的对象
       let obj1 = obj;
       console.log(obj1);
       console.log(obj);
       obj1.name = "李四";
       console.log(obj1);
-      console.log(obj);//obj1改变，obj也改变，obj1和obj指向同一个内存空间
+      console.log(obj); //obj1改变，obj也改变，obj1和obj指向同一个内存空间
+
+      let x = 10;
+      let y = 11;
+      function fn(a, b) {
+        //x-->a,y-->b
+        a = 100;
+        b = 200;
+      }
+      fn(x,y)
+      console.log(x,y); //x和y不变，x和y指向不同的内存空间
+
+      let obj6 = {
+        name: "张三",
+        age: 18,
+        sex: "男",
+      }
+      function fun(o) {
+        o.name = "李四"
+      }
+      fun(obj6)
+      console.log(obj6); //obj6.name改变，obj6指向同一个内存空间
+
+      let arr = ['张三','李四','王五']
+      function fun1(a) {
+        a[0] = '赵六'
+      }
+      fun1(arr)
+      console.log(arr); //arr[0]改变，arr指向同一个内存空间
+
+
 
     </script>
   </body>
