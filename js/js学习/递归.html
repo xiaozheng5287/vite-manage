@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [
+        {
+          title: "aaa",
+          dataIndex: "aaa",
+          parentDataIndex: null,
+        },
+        {
+          title: "aaaa",
+          dataIndex: "aaaa",
+          parentDataIndex: null,
+        },
+        {
+          title: "aa",
+          dataIndex: "aa",
+          parentDataIndex: null,
+        },
+        {
+          title: "cc",
+          dataIndex: "cc",
+          parentDataIndex: "aa",
+        },
+        {
+          title: "dd",
+          dataIndex: "dd",
+          parentDataIndex: "cc",
+        },
+        {
+          title: "bb",
+          dataIndex: "bb",
+          parentDataIndex: "cc",
+        },
+      ];
+      // 递归函数，用于构建嵌套结构
+      function buildTree(nodes, parentDataIndex = null) {
+        let arr = [];
+        //第一遍过滤根节点
+        //后面的n次过滤子节点的parentDataIndex有没有等于当前节点dataIndex的
+        arr = nodes.filter((node) => node.parentDataIndex === parentDataIndex); //aa//cc
+        console.log("arrr", arr);
+        arr = arr.map((node) => {
+          return {
+            ...node,
+            children: buildTree(nodes, node.dataIndex), //bulidTree(nodes, )
+          };
+        });
+        console.log("arr-------", arr);
+        return arr;
+      }
+      // 构建最终的嵌套结构
+      const result = buildTree(arr);
+
+      console.log(result);
+    </script>
+  </body>
+</html>

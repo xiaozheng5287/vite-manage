@@ -45,13 +45,48 @@
       }
       console.log(Array.from(o));
 
-      function fn1() {
+      function fn1(...arg) {
         console.log(arguments);
+        console.log(...arg);
         console.log(Array.from(arguments));
       }
       fn1(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
+      //forEach
+      let arr3 = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+      arr3.forEach(function (item, index, arr) {
+        //第一个参数，代表数组的每一项
+        //第二个参数，代表数组的每一项的索引
+        //第三个参数，代表数组本身
+        // console.log(item, index, arr);
+      })
 
+      //practice 数组去重
+      let arr5 = ['a', 'b', 'a', 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'c'];
+      let newArr1 = []
+      arr5.forEach((item) => {
+        if(newArr1.indexOf(item) === -1) {
+          newArr1.push(item)
+        }
+      })
+      console.log(newArr1);
+
+      let arr6 = [
+        [23, 66, 33, 16],
+        [19, 21, 50, 66, 123, 36],
+        [78, 37, 88, 86]
+      ]
+      //求平均值
+      let sum = 0
+      let count = 0
+      arr6.forEach((item) => {
+        item.forEach((item) => {
+          sum+= item
+          count++
+        })
+      })
+      console.log(sum,count);
+      //最大值
     </script>
   </body>
 </html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 正则表达式
+    // 1.创建正则表达式
+    // 1.1通过字面量创建
+    var reg1 = /abc/;
+    // 1.2通过构造函数创建
+    var reg2 = new RegExp(/abc/);
+    // 2.正则表达式的方法
+    // 2.1test()方法
+    console.log(reg1.test('abc')); //true
+    console.log(reg1.test('abcd')); //true
+    console.log(reg1.test('aabc')); //true
+    console.log(reg1.test('abbc')); //true
+  </script>
+</body>
+</html>
