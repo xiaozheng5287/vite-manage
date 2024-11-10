@@ -16,12 +16,12 @@ const allRoutes = [
     //使用路由懒加载的方式，只有当路由被访问时，才会加载对应的组件
     component: () => import("@/views/login/index.vue"),
   },
-  {
-    path: "/",
-    // redirect: "/index",
-    name: "index",
-    component: () => import("@/layout/index.vue"),
-  },
+  // {
+  //   path: "/",
+  //   // redirect: "/index",
+  //   name: "index",
+  //   component: () => import("@/layout/index.vue"),
+  // },
   ...routes,
 ];
 

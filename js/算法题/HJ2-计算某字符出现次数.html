@@ -1,0 +1,27 @@
+## 1. 题目描述
+写出一个程序，接受一个由字符、数字和空格组成的字符串，和一个字符，然后输出输入字符串中该字符出现的次数。
+示例： ``` 输入：ABCabc A 输出：2 ```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+			let str = "ABCaAAeEbc e"
+			let char = ','
+			let arr = str.split(' ')
+			console.log(arr);
+			let count = 0
+			for (let item of arr[0].toLowerCase()) {
+				if(item === arr[1].toLowerCase() ) {
+					count ++
+				}
+			}
+			console.log(count);
+			
+		</script>
+  </body>
+</html>

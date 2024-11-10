@@ -1,0 +1,35 @@
+## 1. 题目描述
+功能：输入一个正整数，按照从大到小的顺序输出它的所有质因子（重复的也要列举）
+输入描述：输入一个整数
+输出描述：按照从小到大的顺序输出它的所有质数的因子，以空格隔开 示例： ```
+输入：180 输出：2 2 3 3 5 ``` 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const rl = require("readline").createInterface({ input: process.stdin });
+        // var iter = rl[Symbol.asyncIterator]();
+        // const readline = async () => (await iter.next()).value;
+
+        function primeFactorization(num) {
+            let res = [];
+            for (let i = 2; i <= num; i++) {
+                if (num % i === 0) {
+                    res.push(i);
+                    num = num / i;
+                    i--;
+                }
+            }
+            return res.join(" ");
+        }
+        console.log(primeFactorization(180));
+
+    </script>
+</body>
+</html>

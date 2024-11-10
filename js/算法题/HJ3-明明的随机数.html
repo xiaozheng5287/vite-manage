@@ -1,0 +1,62 @@
+## 1. 题目描述
+明明生成了N个1到500之间的随机整数，请你删去其中重复的数字，即相同的数字只保留一个，把其余相同的数去掉，然后再把这些数从小到大排序，按照排好的顺序输出。
+输入描述：
+第一行先输入随机整数的个数N。接下来的N行每行输入一个整数，代表明明生成的随机数。
+示例： ``` 输入：3 2 2 1 输出：1 2
+说明：输入解释：第一个数字3，即这个小样例的个数为N=3，说明用计算机生成了3个1到500之间的随机整数，接下来每行一个随机数字，共3行，也即这3个随机数字为：2、2、1.
+```
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        //生成随机数
+        let n =3 ;//代表随机数的个数 3
+        let arr = []
+        for(let i = 1; i <= n; i++) {
+            arr.push(Math.floor(Math.random() * 500))
+        }
+        console.log(arr);
+        arr = arr.filter((item, index) => arr.indexOf(item) === index)
+				arr.sort((a,b) => {
+					return a-b
+				})
+				arr.forEach((item) => {
+          console.log(item);
+        })
+        /*
+        const rl = require("readline").createInterface({ input: process.stdin });
+        var iter = rl[Symbol.asyncIterator]();
+        const readline = async () => (await iter.next()).value;
+
+        void (async function () {
+            // Write your code here
+            let n = await readline();
+            let numbers = [];
+
+            // 读取接下来的N行输入
+            for (let i = 0; i < n; i++) {
+                let line = await readline(); // 读取一行输入
+                numbers.push(parseInt(line)); // 将输入的数字转换为整数并添加到数组中
+            }
+            numbers = numbers.filter((item, index) => numbers.indexOf(item) === index);
+            // 对数组中的数字进行排序
+            numbers.sort((a, b) => a - b);
+
+            // 输出排序后的数组
+            for (let i = 0; i < numbers.length; i++) {
+                console.log(numbers[i]);
+            }
+        })();
+
+        
+        */
+				
+    </script>
+  </body>
+</html>

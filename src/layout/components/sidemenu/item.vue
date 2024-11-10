@@ -1,6 +1,6 @@
 <template>
   <!--利用递归实现菜单及其子菜单的渲染-->
-  <div v-for="(menuItem) in routeList" @click="handleClick(menuItem)" :key="menuItem.name">
+  <template v-for="(menuItem) in routeList" :key="menuItem.path">
     <a-sub-menu v-if="menuItem.children && menuItem.children.length > 0">
       <template #icon>
         <component :is="menuItem.meta?.icon"/>
@@ -24,7 +24,7 @@
       </template>
       {{ menuItem.meta?.title }}
     </a-menu-item>
-  </div>
+  </template>
 </template>
 
 <script setup>
@@ -41,9 +41,9 @@ const router = useRouter()
 // console.log('menuList',routeList);
 // console.log('menuList',menuList.value);
 const handleClick = (menuItem) => {
-  console.log('rrrrrr',router);
+  // console.log('rrrrrr',router);
   console.log('menuItem',menuItem);
-  router.push(menuItem.path)
+  // router.push(menuItem.path)
 }
 
 
