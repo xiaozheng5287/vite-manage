@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./stack-array.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const stack = new Stack();
+    console.log(stack.isEmpty()); //true
+    stack.push(5);
+    stack.push(8);
+    stack.push(7);
+    console.log(stack.peek()); //7
+    console.log(stack.size()); //3
+    console.log(stack.isEmpty()); //false
+    stack.pop();
+    console.log(stack.size()); //2
+    stack.clear();
+    console.log(stack.size()); //0
+    stack.push(7)
+    stack.push(6)
+    stack.push(5)
+    console.log(stack.items.toString()); //7,6,5
+  </script>
+</body>
+</html>
