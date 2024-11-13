@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let flag = new Boolean(false);
+      console.log(flag);
+      console.log(flag.valueOf());
+      console.log(flag.toString());
+
+      //引用类型和包装类型公用的方法toString()和valueOf()，包装类型会自动销毁
+      //undefined/null.toString()会报错
+
+      //valueOf()返回原始值
+      let d = new Date();
+      console.log(d);//返回时间对象
+      console.log(d.valueOf());//返回时间戳
+
+    </script>
+  </body>
+</html>

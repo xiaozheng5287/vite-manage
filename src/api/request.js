@@ -3,7 +3,7 @@ import axios from "axios";
 //配置请求响应拦截
 
 const service = axios.create({
-  baseURL: "http://localhost:8080",
+  // baseURL: "http://localhost:8080",
 });
 
 //请求拦截
@@ -30,11 +30,12 @@ service.interceptors.response.use(
   (response) => {
     //对响应数据做一些定制化处理
     const res = response.data;
-    if (res.code !== 200) {
-      alert(res.message || "Error!");
-    } else {
-      return res;
-    }
+    // if (res.code !== 200) {
+    //   alert(res.message || "Error!");
+    // } else {
+    //   return res;
+    // }
+    return res;
   },
   (error) => {
     return Promise.reject(error);

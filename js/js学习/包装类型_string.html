@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //简单类型也具有属性和方法，这是因为js在后台自动将简单类型包装成复杂数据类型，
+    //然后调用属性和方法，调用完以后再将其转换成简单类型
+    //字符串
+    // let str = '   hello  abcsdkdkecsaa world    ';
+    let str = 'hello world';
+    let str1 = new String('hello world');
+    //字符串也有长度和索引值
+    console.log(str[0]);
+    console.log(str1[1]);
+    //trim:去除字符串两端空白
+    console.log(str.trim());
+    console.log(str);
+    //split:将字符串分割成数组
+    console.log(str.trim().split('c'));
+    //toLowerCase:将字符串转换成小写,toUpperCase:将字符串转换成大写
+    console.log(str.toLowerCase());
+    console.log(str.toUpperCase());
+    //indexOf:查找字符串中某个字符的索引值，没有则返回-1
+    console.log(str.indexOf('c'));
+    let arr = [1,2,3,5,7]
+    console.log(arr.indexOf(5));
+    //replace:替换字符串中的某个字符
+    console.log(str.replace('c','C'));
+    //如果只有一个参数，从一开始截取到最后
+    //slice(start, end):从start索引值位置截取字符串截取到end索引值位置，end索引位置上的字符取不到
+    let re = str.slice(1, 5);
+    //substring(start, end):从start索引值位置截取字符串截取到end索引值位置，end索引位置上的字符取不到
+    let re1 = str.substring(1, 5);//可以自动识别start和end的大小
+    console.log(str.substring(1));
+    //substr(start, length):从start索引值位置截取字符串截取length个字符
+    
+    let str2 = 'ow我qdnqfqde的adjjda'
+    let startIndex = str2.indexOf('我');
+    let endIndex = str2.indexOf('的');
+    console.log(str2.substring(startIndex, endIndex+1));
+
+    let str3 = 'D:\\learn-code\\vite-manage\\js\\js学习\\包装类型_string.html'
+    let gang = str3.lastIndexOf('\\');
+    let dian = str3.lastIndexOf('.');
+    console.log(str3.substring(gang+1));
+
+
+  </script>
+</body>
+</html>
