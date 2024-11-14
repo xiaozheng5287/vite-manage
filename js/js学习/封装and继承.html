@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //封装
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.lang = "汉语";
+        this.skin = "yellow";
+      }
+      Person.prototype.eat = function () {
+        console.log("eat-----");
+      };
+      Person.prototype.drink = function () {
+        console.log("drink-----");
+      };
+      let obj = new Person("lily", 23);
+      obj.fly = function () {
+        console.log("fly------");
+      };
+      console.log(obj);
+
+      //继承
+      let obj1 = {
+        head: 1,
+        legs: 2,
+        eyes: 2,
+        eat: function () {
+          console.log("eat-----");
+        },
+        drink: function () {
+          console.log("drink-----");
+        },
+      };
+      // function Chinese(n) {
+      //   this.skin = "yellow";
+      //   this.lang = "汉语";
+      // }
+      // function English() {
+      //   this.skin = "white";
+      //   this.lang = "英语";
+      // }
+
+      // Chinese.prototype = obj1;
+      // let c = new Chinese("lily");
+      // console.log(c); //本次继承之后，obj1覆盖了Chinese的原型对象，所以原型对象中的constructor丢失了
+      // //再指向构造函数本身
+      // Chinese.prototype.constructor = Chinese;
+      // // console.log(c);
+
+      // English.prototype = obj1;
+      // English.prototype.constructor = English;
+      // let e = new English("jack");
+      // console.log(e);
+      //此时Chinese的原型对象变成了English,因为obj1,Chinese,English的原型对象都指向了obj1
+
+      //------------优化
+      //构建公共的构造函数
+      function Person() {
+        this.head = 1;
+        this.legs = 2;
+        this.eyes = 2;
+        this.eat = function () {
+          console.log("eat-----");
+        };
+        this.drink = function () {
+          console.log("drink-----");
+        };
+      }
+
+      function Chinese(n) {
+        this.skin = "yellow";
+        this.lang = "汉语";
+      }
+
+      //继承：
+      //1.把对象赋值给原型对象
+      Chinese.prototype = new Person();
+      //2.指回构造函数本身
+      Chinese.prototype.constructor = Chinese;
+      let c = new Chinese("lily");
+      console.log(c);
+
+      function English() {
+        this.skin = "white";
+        this.lang = "英语";
+      }
+      English.prototype = new Person();
+      English.prototype.constructor = English;
+      let e = new English("jack");
+      console.log(e);
+
+
+      
+    </script>
+  </body>
+</html>

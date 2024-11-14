@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      //每一个构造函数都有一个属性：prototype，这个属性指向了一个对象，称为原型对象或者原型
+      //作用：实例对象找不到成员时，就会去原型上找
+      //每一个原型对象都有一个属性：consturctor，用于指回构造函数本身
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+    console.log(Person.prototype.constructor);
+    let obj = new Person('lily',22)
+    console.log(obj);
+    console.log(obj.constructor);
+  </script>
+</body>
+</html>

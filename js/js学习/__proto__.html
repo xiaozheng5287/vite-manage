@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      Person.prototype.eat = function () {
+        console.log('eat-----');
+      }
+      let obj = new Person('lily',23)
+      //每一个对象都有一个属性：__proto__(隐式原型/对象原型)，作用：用于指向原型对象
+      //实例对象如果找不到方法，会沿着__proto__的指向，找到原型对象(显式原型)
+      console.log(obj.__proto__);
+      console.log(Person.prototype);
+    </script>
+  </body>
+</html>

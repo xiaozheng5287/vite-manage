@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+     function People() {
+        this.head = 1;
+        this.legs = 2;
+        this.eyes = 2;
+        this.height = 1.75;
+        this.weight = 70;
+        this.eat = function () {
+          console.log("eat-----");
+        };
+        this.drink = function () {
+          console.log("drink-----");
+        };
+        this.sleep = function () {
+          console.log("sleep-----");
+        };
+      }
+      function Star() {
+        this.money = "￥￥￥"
+        this.makeup = '打扮'
+      }
+
+      let ak = new Star()
+      console.log(ak);
+
+      function Ydy() {
+        this.skill = 'good';
+        this.talent = 'high';
+      }
+
+      Ydy.prototype = new People();
+      Ydy.prototype.constructor = Ydy;
+      let ydy = new Ydy();
+      console.log(ydy);
+      console.log(ydy instanceof Ydy);//true
+      console.log(ydy instanceof People);//true
+      console.log(ydy instanceof Star);//false
+      console.log(ydy instanceof Object);//true
+      console.log(ydy.__proto__ === Ydy.prototype);//true
+      console.log(ydy.__proto__.__proto__ === People.prototype);//true
+      console.log(ydy.__proto__.__proto__.__proto__ === Object.prototype);//true
+      console.log(ydy.__proto__.__proto__.__proto__.__proto__ === null);//true
+
+
+
+
+  </script>
+</body>
+</html>
