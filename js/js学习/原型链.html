@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    Person.prototype.eat = function() {
+      console.log('eat----------');
+    }
+
+    Object.prototype.fly = function() {
+      console.log('fly-------');
+    }
+    //每一个对象都会有一个属性__proto__,__proto__会指向原型对象
+    let obj = new Person('lily', 22)
+    console.log(obj.__proto__.constructor);//Person
+    console.log(obj.__proto__.__proto__.constructor);//Object
+    console.log(obj.__proto__.__proto__.__proto__);//null
+    //原型链：由原型构成的链状结构
+
+    obj.fly();
+  </script>
+</body>
+</html>

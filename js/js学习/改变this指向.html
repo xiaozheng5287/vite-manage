@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input />
+    <script>
+
+      /**
+       * 函数的改变this指向的方法
+       * call方法：
+       * 函数.call(this想指向谁, arg1, arg2, ...)
+       * 函数调用call方法call会调用函数执行，只会在本次函数执行过程中，改变this的指向
+       * call方法可以给函数传参
+       */
+      function fn(a, b) {
+        console.log(this, a, b);
+      }
+      let obj = { name: "lily", age: 22 };
+      fn.call(obj, 1, 2);
+      fn(1, 2); //this
+
+      let obj1 = {
+        name: "lily",
+        age: 22,
+        fly: function (a, b) {
+          console.log(this, a, b);
+        },
+      };
+      let o = {
+        name: "lisa",
+        age: 23,
+      };
+      obj1.fly.call(); //this
+      obj1.fly.call(o, 1, 2); //o
+
+      /**
+       * 函数的改变this指向的方法
+       * apply方法：
+       * 函数.apply(this想指向谁, [arg1, arg2, ...])不改变this，传null就行
+       * 函数调用apply方法apply会调用函数执行，只会在本次函数执行过程中，改变this的指向
+       * apply方法可以给函数传参,必须是个数组
+       */
+      function fn1(a, b) {
+        console.log(this, a, b);
+      }
+      let o1 = {
+        name: "lisa",
+        age: 23,
+      };
+
+      fn1.apply(o1, [1111, 2222]); //o1
+      //取最大值,结合数组会经常使用apply
+      let arr = [11212, 66, 77, 434, 2133];
+      console.log(Math.max(11212, 66, 77, 434, 2133));
+      console.log(Math.max.apply(null, arr));
+
+      /**
+       * 函数的改变this指向的方法
+       * bind方法：
+       * 函数.bind(this想指向谁, [arg1, arg2, ...])不改变this，传null就行
+       * 函数调用bind方法bind不会调用函数执行，而是返回改变this之后的函数
+       * bind方法可以给函数传参,必须是个数组
+       */
+      function fn2(a, b) {
+        console.log(this);
+      }
+      let o2 = {
+        name: "lisa",
+        age: 23,
+      };
+      fn.bind(o2, 123, 456)();
+      //改变this指向，不立刻调用函数时，会使用bind
+      let btn = document.querySelector('input')
+      btn.addEventListener('click', function() {
+        this.disabled = true
+        console.log('-----',this);
+        window.setTimeout(function () {
+          console.log('=====',this);
+          this.disabled = false
+        // }.bind(this), 1000)
+        }, 1000)
+      })
+    </script>
+  </body>
+</html>

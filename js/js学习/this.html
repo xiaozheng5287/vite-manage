@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>111</div>
+    <script>
+      /**
+       * 普通函数this
+       *
+       */
+      // console.log(this);//window
+      // //1.普通函数:this-->window、调用者
+      // function fn() {
+      //   console.log(this);
+
+      // }
+      // fn();
+      // //2.构造函数:this-->实例化对象
+      // function Person(name, age) {
+      //   this.name = name
+      //   this.age = age
+      //   console.log(this)
+      // }
+      // let obj1 = new Person('lily',22)
+      // console.log(obj1);
+      // let obj2 = new Person('lisa',22)
+      // console.log(obj2);
+
+      // //3.方法:this-->调用者
+      // let obj = {
+      //   name: 'lily',
+      //   age: 22,
+      //   fly: function() {
+      //     console.log(this);
+      //   }
+      // }
+      // obj.fly();
+
+      // //4.事件处理函数:this-->事件源
+      // document.addEventListener('click', function() {
+      //   console.log(this);
+      // })
+
+      // //5.定时器:this-->window、调用者
+      // // setInterval(function() {
+      // //   console.log(this);
+      // // },1000)
+
+      // //6.自调用函数:this-->window、调用者
+      // ;(function() {
+      //   console.log(this);
+      // })()
+
+      //严格模式下，this为undefined
+      // n = 2;
+      // console.log(n);//严格模式下报错
+      //"use strict"
+      //1.变量必须先定义再使用
+      //2.普通函数的this指向undefined
+      //3.函数的形参不能重名
+      //function fn(a, a) {
+      //return a+a;
+      //}
+
+      //箭头函数的this:箭头函数没有this，它的this只与所在作用域有关，指向上级作用域
+      window.setTimeout(() => {
+        console.log(this); //this
+      }, 1000);
+
+      document.addEventListener('click', function() {
+        window.setTimeout(() => {
+          console.log(this); //document
+        }, 1000);
+      })
+      //箭头函数一般不给事件处理函数和构造函数使用
+      document.addEventListener('click', () => {
+        console.log(this);//window
+      })
+
+
+
+
+    </script>
+  </body>
+</html>

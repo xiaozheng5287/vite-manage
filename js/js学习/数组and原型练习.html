@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //统计哪个字符出现的次数最多
+      //对象访问属性有两种 obj.xxx(访问固定的属性用.)
+      let str = "12072857723528802348281276265274615";
+      let obj = {};
+      // for (let char of str) {
+      //   if(obj[char]) {
+      //     obj[char] ++
+      //   }
+      //   else {
+      //     obj[char] = 1
+      //   }
+      // }
+      //字符串也可以当做数组去遍历
+      for(let i = 0; i < str.length; i++) {
+        if(obj[str[i]]) {
+          obj[str[i]] ++
+        }
+        else {
+          obj[str[i]] = 1
+        }
+      }
+      console.log(obj);
+      //求出现最多的字符出现了几次
+      let max = 0//字符
+      let count = obj['0'];//次数
+      for(let key in obj) {
+        if(obj[key] > count) {
+          count = obj[key]
+          max = key
+        }
+      }
+      console.log(max,count);
+      // console.log(obj.);
+    </script>
+  </body>
+</html>

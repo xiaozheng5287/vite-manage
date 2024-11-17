@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //数组求和
+    let arr = [1,2,3]
+    console.log(arr);
+    console.log(arr.__proto__.constructor);//f Array()(构造函数)
+    console.log(arr.__proto__.constructor.prototype);//(构造函数的prototype属性，指向的是原型对象)
+    console.log(Array.prototype);
+    console.log(arr.__proto__ === Array.prototype);//true
+    console.log(Array.__proto__.constructor);//f Function()
+    console.log(Array.__proto__.constructor.prototype);//f ()
+    console.log(Array.__proto__.__proto__.__proto__);//null
+    console.log(Object.__proto__.__proto__.__proto__);//null
+
+    //原型对象：构造函数的一个属性，prototype指向了一个对象称为原型对象
+    //constructor:原型对象的一个属性，用于指回构造函数本身
+    //__proto__:每一个对象都有这个属性，作用：指向原型对象
+    //原型继承：把实例化对象赋值给原型对象，指回构造函数本身
+    //原型链：把原型串联起来的链状结构，作用：提供查找成员机制
+
+  </script>
+</body>
+</html>
