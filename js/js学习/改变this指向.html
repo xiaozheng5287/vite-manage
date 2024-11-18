@@ -61,9 +61,8 @@
       /**
        * 函数的改变this指向的方法
        * bind方法：
-       * 函数.bind(this想指向谁, [arg1, arg2, ...])不改变this，传null就行
-       * 函数调用bind方法bind不会调用函数执行，而是返回改变this之后的函数
-       * bind方法可以给函数传参,必须是个数组
+       * 函数bind不会调用函数执行，而是返回改变this之后的函数
+       * 函数调用bind方法
        */
       function fn2(a, b) {
         console.log(this);

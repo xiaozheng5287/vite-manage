@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //es6新增【类】的创造语法,类可以被用于实现逻辑的封装
+    class Person {
+      //添加成员
+      //静态成员--只能由构造对象访问
+      static lang = 'chinese'
+      static skin = 'yellow'
+      static eat() {//类里面不能写function
+        console.log('eat-------');
+      }
+      static drink() {
+        console.log('drink-------');
+      }
+      //实例成员--只能由实例对象访问
+      name = 'lily';//这是属性，不是变量
+      age = 23;
+      fly() {
+        console.log('fly------');
+      }
+      //类的内部有构造器constructor,如果不写，会自动创建构造方法，实例化时会自动执行构造方法
+      //constructor一般用于接收参数，做初始化操作
+      constructor(height, weight) {
+        console.log('123');
+        this.height = height
+        this.weight = weight
+
+      }
+    }
+    //实例化
+    let p1 = new Person()
+    console.log(p1);
+    console.log(p1 instanceof Object);
+    console.log(p1.lang);//undefined
+    console.log(Person.lang);//chinese
+    console.log(p1.name);//lily
+    console.log(Person.age);//undefined
+
+    let obj = new Person()
+    console.log(obj);
+    let objcon = new Person('1.7m', '50kg')
+    console.log(objcon);
+
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      name: 'lily',
+      age: 22,
+      sex: 'female',
+      arr: [1,2,[3,5,[6,7],7],8],
+      o: {
+        h: 'aa',
+        k: 'bbb',
+        j: {
+          a: 'ccc'
+        }
+      }
+    }
+
+    let newObj = {}
+    //拷贝不是直接赋值，赋值改变的是地址
+
+    //浅拷贝:只拷贝了外面一层的简单类型，复杂类型无法正确拷贝
+    //简单数据类型可以赋值，相当于拷贝
+    // newObj.name = obj.name
+    // newObj.age = obj.age
+    // newObj.sex = obj.sex
+    //遍历
+    // for(let key in obj) {
+    //   newObj[key] = obj[key]
+    // }
+    // newObj.name = 'lisa'
+    // console.log(newObj, obj);
+    // //浅拷贝方法
+    // Object.assign(newObj, obj)
+    // console.log(newObj);
+
+    //深拷贝
+    //如果遇到obj[key]是复杂类型，再遍历操作
+
+    function deepClone(newObj, orginObj) {
+      for(let key in orginObj) {
+        //先判断数组
+        if(orginObj[key] instanceof Array) {
+          newObj[key] = []
+          //未知数组的维度
+          deepClone(newObj[key], orginObj[key])
+        }
+        else if(orginObj[key] instanceof Object) {
+          newObj[key] = {}
+          deepClone(newObj[key], orginObj[key])
+        }
+        else {
+          newObj[key] = orginObj[key]
+        }
+      }
+    }
+
+    deepClone(newObj,obj)
+    console.log(newObj);
+
+
+
+  </script>
+</body>
+</html>

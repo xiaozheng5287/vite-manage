@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Father {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+      money() {
+        console.log('money------');
+      }
+    }
+    //继承
+    //子类有自己独有的成员
+    class Son extends Father{
+      // Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+      constructor(name, age, score) {
+        //如果子类有自己的constructor，必须通过super才可以调用父类的方法
+        super(name, age)//先调用super，再设定自己的成员
+        this.score = score
+      }
+      money() {
+        //同名函数-->就近原则，如果依旧想要调用父类的方法，用super
+        super.money()
+        console.log('ownmoney----');
+      }
+    }
+    
+    let obj = new Son('lilei', 20, 99)//实例化对象时，形参传给自己的constructor
+    console.log(obj);
+    obj.money();//就近原则
+
+    //类的本质-->函数,类的写法称为构造函数的语法糖
+    //----->es6之前
+    //function Person () {}
+    //----->es6之后
+    class Person {}
+    let obj1 = new Person()
+    console.log(obj1);
+    console.log(typeof Person);//function
+    console.log(obj1.__proto__);//{}
+
+
+
+  </script>
+</body>
+</html>
