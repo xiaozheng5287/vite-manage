@@ -1,0 +1,64 @@
+小明每周上班都会拿到自己的工作清单，工作清单内包含n项工作，每项工作都有对应的耗时时间（单位h）和报酬,
+
+工作的总报酬为所有已完成工作的报酬之和，那么请你帮小明安排一下工作，保证小明在指定的工作时间内工作收入最大化。
+
+输入描述
+
+输入的第一行为两个正整数T，n。
+
+T代表工作时长（单位h，0<T<1000000），n代表工作数量（1<n≤3000）。
+
+接下来是n行，每行包含两个整数t，w。
+
+t代表该工作消耗的时长（单位h，t>0）,w代表该项工作的报酬。
+
+输出描述
+
+输出小明制定工作时长内工作可获得的最大报酬。
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let lines = [];
+      let T, n;
+      while ((line = readline())) {
+        lines.push(line);
+        if (lines.length === 1) {
+          [T, n] = lines[0].split(" ").map(Number);
+        }
+        if (n && lines.length === n + 1) {
+          // lines = lines.slice(1, lines.length + 1);
+          lines.shift();
+          let taskList = lines.map((item) => item.split(" ").map(Number));
+          let minTime = Infinity;
+          for (let item of taskList) {
+            minTime = Math.min(minTime, item[0]);
+          }
+          let money = new Array(n + 1)
+            .fill()
+            .map(() => new Array(T + 1).fill(0));
+          for (let i = 1; i <= n; i++) {
+            for (let j = minTime; j <= T; j++) {
+              if (taskList[i - 1][0] > j) {
+                money[i][j] = money[i - 1][j];
+              } else {
+                const pre = money[i - 1][j];
+                const cur =
+                  taskList[i - 1][1] + money[i - 1][j - taskList[i - 1][0]];
+                money[i][j] = Math.max(pre, cur);
+              }
+            }
+          }
+          console.log(money[n][T]);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+疫情期间，小明隔离在家，百无聊赖，在纸上写数字玩。他发明了一种写法：
+给出数字个数 n （0 < n ≤ 999）和行数 m（0 < m ≤ 999），从左上角的 1 开始，按照顺时针螺旋向内写方式，依次写出2,3,…,n，最终形成一个 m 行矩阵。
+小明对这个矩阵有些要求：
+每行数字的个数一样多
+列的数量尽可能少
+填充数字时优先填充外部 
+数字不够时，使用单个 * 号占位
+输入描述
+两个整数，空格隔开，依次表示 n、m
+输出描述
+符合要求的唯一矩阵
+用例
+输入 9 4
+输出 1 2 3
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const rl = require("readline").createInterface({ input: process.stdin });
+      var iter = rl[Symbol.asyncIterator]();
+      const readline = async () => (await iter.next()).value;
+
+      void (async function () {
+        // Write your code here
+        const line = await readline();
+        const [n, m] = line.split(" ").map(Number);
+        const k = Math.ceil(n / m);
+        const mix = new Array(m).fill(0).map(() => new Array(k).fill("*"));
+        let row = 0;
+        let column = 0;
+        let step = 1;
+        while (step <= n) {
+          //正序填行
+          while (column < k && mix[row][column] == "*" && step <= n)
+            mix[row][column++] = step++;
+          column--;
+          row++;
+          //正序填列
+          while (row < m && mix[row][column] == "*" && step <= n)
+            mix[row++][column] = step++;
+          column--;
+          row--;
+          //逆序填行
+          while (column >= 0 && mix[row][column] == "*" && step <= n)
+            mix[row][column--] = step++;
+          column++;
+          row--;
+          //逆序填列
+          while (row >= 0 && mix[row][column] == "*" && step <= n)
+            mix[row--][column] = step++;
+          column++;
+          row++;
+        }
+        for (let i = 0; i < m; i++) {
+          console.log(mix[i].join(" "));
+        }
+      })();
+    </script>
+  </body>
+</html>
