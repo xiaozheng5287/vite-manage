@@ -28,18 +28,18 @@
       let middle
       while(left <= right) {
         middle = left + ((right - left) >> 1);
-        if(middle > target / middle) {
+        if((middle * middle) > target) {
           right = middle - 1
           //为了防止平方根除不开导致算不出结果
-          if (middle - 1 < target / (middle - 1)) {
-            return middle;
-          }
+          // if ((middle - 1) * (middle - 1) < target) {
+          //   return middle;
+          // }
         }
-        else if(middle < target / middle) {
+        else if((middle * middle) < target) {
           left = middle + 1
           //为了防止平方根除不开导致算不出结果
           // 判断(mid+1)的平方是否大于target，如果(mid+1)的平方大于x，那么mid就是x的平方根
-          if (middle + 1 > target / (middle + 1)) {
+          if ((middle + 1) * (middle + 1) > target) {
             return middle;
           }
         }

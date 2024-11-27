@@ -1,0 +1,49 @@
+给定一个二维数组 array，请返回「螺旋遍历」该数组的结果。
+螺旋遍历：从左上角开始，按照 向右、向下、向左、向上 的顺序 依次
+提取元素，然后再进入内部一层重复相同的步骤，直到提取完所有元素。 示例 1：
+输入：array = [[1,2,3],[8,9,4],[7,6,5]] 输出：[1,2,3,4,5,6,7,8,9] 示例 2：
+输入：array = [[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]
+输出：[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] 限制： 0 <= array.length <= 100 0
+<= array[i].length <= 100
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function seperate(arr) {
+        let newArr = [];
+        let startX = (startY = 0);
+        let loop = Math.max(arr.length, arr[0].length);
+        let num = arr.length;
+        let mid = Math.floor(arr.length / 2);
+        let offset = 1;
+        while (loop--) {
+          for (j = startY; j < num - offset; j++) {
+            newArr.push(arr[startX][j]);
+          }
+          for (i = startX; i < num - offset; i++) {
+            newArr.push(arr[i][j]);
+          }
+          for (; j > startY; j--) {
+            newArr.push(arr[i][j]);
+          }
+          for (; i > startX; i--) {
+            newArr.push(arr[i][j]);
+          }
+          startX++;
+          startY++;
+          offset++;
+        }
+        if (num % 2 === 1) {
+          newArr.push(arr[mid][mid]);
+        }
+        return newArr;
+      }
+    </script>
+  </body>
+</html>
