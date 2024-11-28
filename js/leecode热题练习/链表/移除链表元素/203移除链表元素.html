@@ -1,0 +1,62 @@
+给你一个链表的头节点 head 和一个整数 val ， 请你删除链表中所有满足 Node.val ==
+val 的节点，并返回 新的头节点 。 示例 1： 输入：head = [1,2,6,3,4,5,6], val = 6
+输出：[1,2,3,4,5] 示例 2： 输入：head = [], val = 1 输出：[] 示例 3： 输入：head
+= [7,7,7,7], val = 7 输出：[] 提示： 列表中的节点数目在范围 [0, 104] 内 1 <=
+Node.val <= 50 0 <= val <= 50
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class ListNode {
+        val;
+        next = null;
+        constructor(value) {
+          this.val = value;
+          this.next = null;
+        }
+      }
+      /**
+       * 方法1：非头节点，要删除的节点的前一个节点的指针，指向下一个节点
+       *        头节点：将head指向下一个非目标值的节点
+       */
+      function moveNode(head, val) {
+        //移除头节点
+        while (head !== null && head.val === val) {
+          head = head.next;
+        }
+        let cur = head;
+        while (cur !== null && cur.next !== null) {
+          if (cur.next.val === val) {
+            cur.next = cur.next.next;
+          } else {
+            cur = cur.next;
+          }
+        }
+        return head;
+      }
+      /**
+       * 方法2：虚拟头节点
+       */
+      function dummyHead(head, val) {
+        //实例化一个虚拟头节点
+        const diff = new ListNode(0, head);
+        diff.next = head;
+        let cur = diff; //临时变量代表头节点，实际的头节点不能变
+        while (cur !== null && cur.next !== null) {
+          if (cur.next.val === val) {
+            cur.next = cur.next.next;
+          } else {
+            cur = cur.next; //继续向下遍历
+          }
+        }
+        return diff.next;
+      }
+    </script>
+  </body>
+</html>

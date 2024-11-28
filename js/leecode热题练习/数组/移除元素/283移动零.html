@@ -23,24 +23,39 @@
 </head>
 <body>
   <script>
+    /**
+     * 1.双指针：
+              快指针：寻找新数组的元素 ，新数组就是不含有目标元素的数组
+              慢指针：指向更新 新数组下标的位置
+    */
     function moveZeroes(nums) {
       let slowIndex = 0
       let fastIndex = 0
       let length = nums.length
       let count = 0
+      // while(fastIndex < nums.length) {
+      //   if(nums[fastIndex] !== 0) {
+      //     nums[slowIndex] = nums[fastIndex]
+      //     slowIndex ++
+      //   }
+      //   else {
+      //     count ++
+      //   }
+      //   fastIndex++
+      // }
+      // while(count--){
+        
+      //   nums[length -1 - (count)] = 0
+      // }
+      /**
+       * 简便方法：交换非0元素与0的位置
+       * */
       while(fastIndex < nums.length) {
         if(nums[fastIndex] !== 0) {
-          nums[slowIndex] = nums[fastIndex]
-          slowIndex ++
-        }
-        else {
-          count ++
+          [nums[slowIndex], nums[fastIndex]] = [nums[fastIndex], nums[slowIndex]]
+          slowIndex++
         }
         fastIndex++
-      }
-      while(count--){
-        
-        nums[length -1 - (count)] = 0
       }
       return nums
     }
