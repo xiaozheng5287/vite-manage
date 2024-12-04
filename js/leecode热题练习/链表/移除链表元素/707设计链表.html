@@ -42,6 +42,97 @@ myLinkedList.get(1);              // 返回 3
   <title>Document</title>
 </head>
 <body>
+  <script>
+  /**
+   * 1.获取第n个节点的值
+   * 2.头部插入节点
+   * 3.尾部插入节点
+   * 4.第n个节点前插入节点
+   * 5.删除第n个节点
+   * 虚拟头节点
+   *  |
+   *  __      __     ___     ___     ___
+   * |__|--》|__|--》|__|--》|__|--》|__|
+   *    \     /
+   *       __
+   *      |__|
+  */
+
+  //链表构造函数
+  class LinkNode {
+    constructor(val, next) {
+      this.val = val;
+      this.next = next;
+    }
+  }
+  /**
+   * Initialize your data structure here.
+   * 单链表 储存头尾节点 和 节点数量
+   */
+  var MyLinkedList = function() {
+    this._size = 0;
+    this._tail = null;
+    this._head = null;
+  };
   
+  /** 
+   * @param {number} index
+   * @return {number}
+   */
+  MyLinkedList.prototype.get = function(index) {
+    //int get(int index) 获取链表中下标为 index 的节点的值。如果下标无效，则返回 -1 。
+    if(index < 0 || index > this._size - 1) return -1
+    //实例化一个虚拟头节点
+    const diff = new LinkNode(0, this._head);
+    let cur = diff
+    while(index--) {
+      cur = cur.next
+    }
+    return cur.next.val
+  };
+  
+  /** 
+   * @param {number} val
+   * @return {void}
+   */
+  MyLinkedList.prototype.addAtHead = function(val) {
+      
+  };
+  
+  /** 
+   * @param {number} val
+   * @return {void}
+   */
+  MyLinkedList.prototype.addAtTail = function(val) {
+      
+  };
+  
+  /** 
+   * @param {number} index 
+   * @param {number} val
+   * @return {void}
+   */
+  MyLinkedList.prototype.addAtIndex = function(index, val) {
+      
+  };
+  
+  /** 
+   * @param {number} index
+   * @return {void}
+   */
+  MyLinkedList.prototype.deleteAtIndex = function(index) {
+      
+  };
+  
+  /** 
+   * Your MyLinkedList object will be instantiated and called as such:
+   * var obj = new MyLinkedList()
+   * var param_1 = obj.get(index)
+   * obj.addAtHead(val)
+   * obj.addAtTail(val)
+   * obj.addAtIndex(index,val)
+   * obj.deleteAtIndex(index)
+   */
+  </script>
 </body>
 </html>
