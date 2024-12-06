@@ -96,7 +96,10 @@ myLinkedList.get(1);              // 返回 3
    * @return {void}
    */
   MyLinkedList.prototype.addAtHead = function(val) {
-      
+    const diff = new LinkNode(val, this._head);
+    this._head = diff
+    this._size++
+    if(!this._tail) this._tail = diff
   };
   
   /** 
@@ -104,7 +107,17 @@ myLinkedList.get(1);              // 返回 3
    * @return {void}
    */
   MyLinkedList.prototype.addAtTail = function(val) {
-      
+      const node = new LinkNode(val, null);
+      this._size++
+      if(this._tail) {
+        this._tail.next = node
+        this._tail = node
+      }
+      else {
+        this._head = node
+        this._tail = node
+      }
+
   };
   
   /** 
@@ -113,7 +126,7 @@ myLinkedList.get(1);              // 返回 3
    * @return {void}
    */
   MyLinkedList.prototype.addAtIndex = function(index, val) {
-      
+    
   };
   
   /** 
