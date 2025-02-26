@@ -1,6 +1,6 @@
 <template>
   <div>
-    home
+    <!-- home -->
     <a-button type="primary" @click="query()">查询</a-button>
     <a-table :dataSource="dataSource" :columns="columns" />
   </div>
@@ -31,7 +31,7 @@ const columns = ref([
     key: "id",
   },
   {
-    title: "金额",
+    title: "单价",
     dataIndex: "money",
     key: "money",
   },
@@ -43,6 +43,36 @@ const columns = ref([
   {
     title: "应缴金额",
     dataIndex: "owe",
+    key: "owe",
+  },
+  {
+    title: "应缴金额",
+    dataIndex: "owe",
+    key: "owe",
+  },
+  {
+    title: "总金额",
+    dataIndex: "sum",
+    key: "sum",
+  },
+  {
+    title: "欠费月份数",
+    dataIndex: "owe",
+    key: "owe",
+  },
+  {
+    title: "VIN码",
+    dataIndex: "vin",
+    key: "vin",
+  },
+  {
+    title: "所属企业",
+    dataIndex: "company",
+    key: "company",
+  },
+  {
+    title: "原卡号",
+    dataIndex: "oldSim",
     key: "owe",
   },
 	{
