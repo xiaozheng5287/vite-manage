@@ -1,44 +1,40 @@
 <template>
   <div>
-    <a-form :model="formState" :label-col="labelCol" :wrapper-col="wrapperCol">
-    <a-form-item label="Activity name">
-      <a-input v-model:value="formState.name" />
-    </a-form-item>
-    <a-form-item label="Instant delivery">
-      <a-switch v-model:checked="formState.delivery" />
-    </a-form-item>
-    <a-form-item label="Activity type">
-      <a-checkbox-group v-model:value="formState.type">
-        <a-checkbox value="1" name="type">Online</a-checkbox>
-        <a-checkbox value="2" name="type">Promotion</a-checkbox>
-        <a-checkbox value="3" name="type">Offline</a-checkbox>
-      </a-checkbox-group>
-    </a-form-item>
-    <a-form-item label="Resources">
-      <a-radio-group v-model:value="formState.resource">
-        <a-radio value="1">Sponsor</a-radio>
-        <a-radio value="2">Venue</a-radio>
-      </a-radio-group>
-    </a-form-item>
-    <a-form-item label="Activity form">
-      <a-textarea v-model:value="formState.desc" />
-    </a-form-item>
-    <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">Create</a-button>
-      <a-button style="margin-left: 10px">Cancel</a-button>
-    </a-form-item>
-  </a-form>
+    <a-form :model="formModel">
+      <template v-for="(item, index) in formConfig" :key="index">
+        <!--根据表单配置项不同的type来区分具体渲染某个表单-->
+        <a-form-item :label="item.label">
+          <!--当然每个表单类型都有些公共属性，也有一些自己独有的属性-->
+          <!-- <a-input v-model:value="formModel[item.fieldName]"></a-input> -->
+          <component
+            :is="getComponentType(item.type)"
+            v-model:value="formModel[item.fieldName]"
+          />
+        </a-form-item>
+      </template>
+    </a-form>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 // import { Form as AForm, Input, Button, FormItem } from 'ant-design-vue'
-const formState = ref({
-  
-})
+defineProps({
+  formConfig: {
+    type: Array,
+    required: true,
+  },
+  formModel: {
+    type: Object,
+    required: true,
+  },
+});
+
+const componentPrefix = "a-"; // Ant Design组件前缀
+
+const getComponentType = (type) => {
+  return componentPrefix + type.toLowerCase();
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

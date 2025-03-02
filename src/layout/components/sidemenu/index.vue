@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h3 style="padding: 10px 0 10px 20px; margin: 0">物流车辆费用管理系统</h3>
+    <!-- <h3 style="padding: 10px 0 10px 20px; margin: 0">物流车辆费用管理系统</h3> -->
+    <h3 style="padding: 10px 0 10px 20px; margin: 0">费用管理系统</h3>
     <a-menu theme="light" mode="inline" @click="handleClick">
       <item :routeList="routes[0].children"> </item>
     </a-menu>
